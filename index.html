@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ALLAN YANGBYN</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background */
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top,#3b00ff33,transparent 50%),
+    radial-gradient(circle at bottom,#00ffee22,transparent 50%),
+    #050816;
+    z-index:-3;
+}
+
+.grid{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:60px 60px;
+    transform:perspective(1000px) rotateX(75deg) scale(2);
+    transform-origin:top;
+    opacity:.15;
+    z-index:-2;
+}
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#00f0ff33;
+    filter:blur(100px);
+    animation:moveGlow 8s infinite alternate ease-in-out;
+    z-index:-1;
+}
+
+@keyframes moveGlow{
+    from{
+        transform:translate(-100px,-50px);
+    }
+    to{
+        transform:translate(70vw,50vh);
+    }
+}
+
+section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 8%;
+    position:relative;
+}
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.small-text{
+    letter-spacing:4px;
+    color:#00e5ff;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(4rem,9vw,8rem);
+    font-weight:900;
+    line-height:1;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,#00f0ff,#ffffff,#7d5fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 40px rgba(0,255,255,.25);
+}
+
+.hero p{
+    max-width:700px;
+    margin-top:25px;
+    font-size:1.2rem;
+    color:#b8c5d1;
+}
+
+.scroll{
+    margin-top:40px;
+    animation:bounce 2s infinite;
+    color:#00f0ff;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(10px);
+    }
+}
+
+/* Cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    width:100%;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border-radius:30px;
+    padding:30px;
+    transition:.4s ease;
+    transform-style:preserve-3d;
+    box-shadow:0 0 40px rgba(0,255,255,.08);
+}
+
+.card:hover{
+    transform:translateY(-12px) rotateX(5deg) rotateY(-5deg);
+    border-color:#00e5ff;
+    box-shadow:0 0 50px rgba(0,255,255,.25);
+}
+
+.card h2{
+    font-family:'Orbitron';
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#c7d4e0;
+    line-height:1.7;
+}
+
+.big-title{
+    position:absolute;
+    top:80px;
+    font-size:clamp(2rem,5vw,5rem);
+    opacity:.08;
+    font-family:'Orbitron';
+    text-transform:uppercase;
+}
+
+/* Football section */
+.football{
+    flex-direction:column;
+    text-align:center;
+}
+
+.ball{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:
+    radial-gradient(circle at top left,#ffffff,#cfcfcf);
+    box-shadow:
+    0 0 80px rgba(255,255,255,.2);
+    animation:float 4s infinite ease-in-out;
+    margin-bottom:30px;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-20px) rotate(10deg);
+    }
+}
+
+.stats{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.stat{
+    width:200px;
+    background:rgba(255,255,255,.06);
+    padding:30px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.stat h3{
+    color:#00f0ff;
+    font-size:2rem;
+}
+
+/* TikTok section */
+.tiktok-box{
+    width:min(900px,100%);
+    background:rgba(255,255,255,.06);
+    border-radius:35px;
+    padding:50px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(20px);
+}
+
+.tiktok{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.follow-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:18px 40px;
+    border-radius:100px;
+    background:linear-gradient(90deg,#00f0ff,#7d5fff);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.follow-btn:hover{
+    transform:scale(1.08);
+}
+
+/* reveal */
+.hidden{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+footer{
+    text-align:center;
+    padding:60px;
+    color:#93a4b5;
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow"></div>
+
+<section class="hero">
+    <div class="small-text">FOOTBALL • CREATOR • FUTURE</div>
+    <h1>ALLAN<br>YANGBYN</h1>
+    <p>
+        Football energy. Creator mindset.
+        A futuristic experience inspired by modern sports,
+        creativity and next-level vibes.
+    </p>
+
+    <div class="scroll">
+        ↓ Scroll ↓
+    </div>
+</section>
+
+<section>
+    <div class="big-title">About</div>
+
+    <div class="cards hidden">
+        <div class="card">
+            <h2>⚽ Football</h2>
+            <p>
+                Passion for football, hard work and improving every game.
+                Always focused on the next level.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Future</h2>
+            <p>
+                A futuristic mindset with ambition,
+                creativity and confidence.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🔥 Creator</h2>
+            <p>
+                Social media creativity mixed with football energy
+                and modern vibes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="football">
+    <div class="big-title">Football</div>
+
+    <div class="ball"></div>
+
+    <h1 style="font-family:Orbitron;">
+        GAME MODE ⚽
+    </h1>
+
+    <div class="stats hidden">
+        <div class="stat">
+            <h3>100%</h3>
+            <p>Energy</p>
+        </div>
+
+        <div class="stat">
+            <h3>24/7</h3>
+            <p>Motivation</p>
+        </div>
+
+        <div class="stat">
+            <h3>∞</h3>
+            <p>Dreams</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="big-title">TikTok</div>
+
+    <div class="tiktok-box hidden">
+        <div class="tiktok">🎥</div>
+
+        <h1 style="font-family:Orbitron;">
+            @allanyangbyn
+        </h1>
+
+        <p style="margin-top:15px;color:#c8d4df;">
+            Football content, edits, highlights and creator vibes.
+        </p>
+
+        <a href="https://www.tiktok.com/@allanyangbyn"
+        class="follow-btn"
+        target="_blank">
+            Follow
+        </a>
+    </div>
+</section>
+
+<footer>
+    Designed for Allan Yangbyn ⚡
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    })
+},{
+    threshold:0.15
+})
+
+document.querySelectorAll(".hidden")
+.forEach(el=>observer.observe(el))
+
+document.addEventListener("mousemove",(e)=>{
+    const glow=document.querySelector(".glow");
+
+    glow.style.left=e.clientX-200+"px";
+    glow.style.top=e.clientY-200+"px";
+})
+</script>
+
+</body>
+</html>
